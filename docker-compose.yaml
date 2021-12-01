@@ -3,7 +3,7 @@ version: '3.1'
 services:
     php:
         build:
-            context: Docker
+            context: .
             dockerfile: Dockerfile
         ports:
             - 5555:80
