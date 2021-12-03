@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Framwork;
 
 use ErrorController;
@@ -16,7 +15,7 @@ class Router
 
     foreach ($routes as $route) {
       if ($path === $route->getAttribute('p')) {
-        $controllerClass = 'Controller\\' . $route->getAttribute('controller');
+        $controllerClass = 'App\Controller\\' . $route->getAttribute('controller');
         $action = $route->getAttribute('action');
         $params = [];
         if ($route->hasAttribute('params')) {
