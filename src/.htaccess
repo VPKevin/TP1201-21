@@ -1,9 +1,3 @@
-#Rewrite of user page
+RewriteEngine On
 
-RewriteRule ^user/([a-z0-9-]+)-([0-9]+)$ user.php?name=$1&id=$2
-
-#Rewrite of post page
-
-
-#Rewrite of commentary page
-
+RewriteRule ^([a-zA-Z0-9\/]*)$ index.php?p=$1
