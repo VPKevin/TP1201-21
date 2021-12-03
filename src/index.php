@@ -3,9 +3,9 @@
 session_start();
 
 // require 'Vendor/Core/SplClassLoader.php';
-require_once 'Config/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$router = new \Vendor\Core\Router();
+$router = new App\Framwork\Router();
 $router->getController();
 
-echo 'Salut';
+echo 'Salut '.$_GET['p'];

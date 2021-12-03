@@ -1,24 +1,41 @@
 <?php
+namespace Entity;
+
+use model\UserManager;
+use model\PostManager;
 
 class Commentary
 {
 
     private $id;
 
-    private $title;
-
     private $content;
 
-    /** @var User */
-    private $autor;
+    private $autorId;
 
-    /** @var Post */
-    private $post;
-
-    private $createdAt;
+    private $postId;
 
     public function __construct()
     {
         $this->createdAt = date('d/m/y h:m');
     }
-}
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+
+    public function setAutorId($autorId)
+    {
+        $this->autorId = $autorId;
+    }
+
+    public function setPostId($postId)
+    {
+        $this->postId = $postId;
+    }
