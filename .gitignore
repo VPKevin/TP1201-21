@@ -1,1 +1,10 @@
 /.idea
+/database/ddl_recovery-backup.log
+/database/ddl_recovery.log
+/database/aria_log_control
+/database/aria_log.00000001
+/database/ib_buffer_pool
+/database/ib_logfile0
+/database/ibdata1
+/database/ibtmp1
+/database/multi-master.info

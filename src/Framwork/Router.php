@@ -1,8 +1,8 @@
 <?php
 
-namespace Core;
+namespace App\Framwork;
 
-use Controller\ErrorController;
+use ErrorController;
 
 class Router
 {
@@ -25,9 +25,9 @@ class Router
             $params[$key] = $_GET[$key];
           }
         }
-        return new $controllerClasse($action, $params);
+        return new $controllerClass($action, $params);
       }
     }
-    return new ErrorController('noRoute');
+    // return new ErrorController('noRoute');
   }
 }
