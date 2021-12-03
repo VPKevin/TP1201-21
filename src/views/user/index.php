@@ -12,20 +12,29 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($users as $user): ?>
+                    <?php foreach($vars as $user): ?>
                         <tr>
+                            <td><?= $user.getFirstName() ?></td>
                         </tr>
 
                         <tr>
+                            <td><?= $user.getLastName() ?></td>
                         </tr>
 
                         <tr>
+                            <td><?= $user.getEmail() ?></td>
                         </tr>
 
                         <tr>
+                            <td><?= $user.getPassword() ?></td>
                         </tr>
 
                         <tr>
+                            <?= if($user.getIsAdmin() === true): ?>
+                                <td>Admin</td>
+                            <? else: ?>
+                                <td>Admin</td>
+                            <? endif ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
