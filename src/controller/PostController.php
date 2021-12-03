@@ -1,84 +1,113 @@
 <?php
+namespace App\Controller;
 
+use App\Model\PostManager;
+use App\Model\CommentaryManager;
 
-class PostController
+class PostController extends BaseController
 {
     public function index()
     {
-        $postManager = new PostManager;
+        $postManager = new PostManager();
 
-        /** TODO : get function in PostManager */
         $posts = $postManager->getPosts();
 
-        /** TODO : Render in BaseController */
         return $this->render(
             'accueil',
             $posts,
             'post/index'
+        );
+    }
+
+    public function show($id) {
+        $postManager = new PostManager();
+        $commentaryManager = new CommentaryManager();
+
+        $post = $postManager->find($id);
+        $commentaries = $commentaryManager->findAll($post->getId());
+
+        $userManager = new UserManager();
+        $user = $userManager->findAll();
+
+        $arrayOfContent = [
+            'post' => $post,
+            'commentaries' => $commentaries,
+            'users' => $user
+        ];
+
+        return $this->render(
+            'show',
+            $arrayOfContent,
+            'post/show'
         );
     }
 
     public function create()
     {
-        $postManager = new PostManager;
+        $postManager = new PostManager();
 
-        /** TODO : get function in PostManager */
-        $posts = $postManager->getPosts();
+        $post = new Post();
 
-        if (!empty($_POST)) {
-            $postManager->create();
+        if (!empty($_POST['title']) && !empty($_POST['content'])){
+
+            $post->setTitle($_POST['title']);
+            $post->setContent($_POST['title']);
+
+            /** TODO : GET connected user */
+            //$post->setAutorId();
+
+            $postManager->create($post);
             header('Location: /');
             exit();
         }
 
-
-        /** TODO :
-         *      - Render in BaseController
-         *      - Redirect root
-         */
         return $this->render(
-            'accueil',
-            $posts,
+            'create',
+            null,
             'post/create'
         );
     }
 
-    public function update()
+    public function update($postId)
     {
-        $postManager = new PostManager;
+        $commentary = new Commentary();
+        $postManager = new PostManager();
+        $post = $postManager->find($postId);
+        $commentaryManager = new CommentaryManager();
 
-        /** TODO : get function in PostManager */
-        $posts = $postManager->getPosts();
+        if (!empty($_POST['title']) || !empty($_POST['content'])){
 
-        if (!empty($_POST)) {
-            $postManager->save();
+            $post->setTitle($_POST['title']);
+            $post->setContent($_POST['content']);
+
+            if(!empty($_POST['commentary-content'])) {
+
+                $commentary->setContent($_POST['commentary-content']);
+                /** TODO : GET connected user */
+                //$commentary->setAutorId();
+                $commentary->setPostId($post->getId());
+            }
+
+            $postManager->save($post);
             header('Location: /');
             exit();
         }
 
-        /** TODO :
-         *      - Render in BaseController
-         *      - Redirect root
-         */
         return $this->render(
-            'accueil',
-            $posts,
+            'update',
+            $post,
             'post/update'
         );
     }
 
-    public function delete()
+    public function delete($postId)
     {
-        $postManager = new PostManager;
+        $postManager = new PostManager();
 
         /** TODO : get function in PostManager */
-        $posts = $postManager->remove();
+        $postManager->remove($postId);
 
-        /** TODO : Render in BaseController */
-        return $this->render(
-            'accueil',
-            $posts,
-            'post/index'
-        );
+        header('Location: /');
+        exit();
     }
 }

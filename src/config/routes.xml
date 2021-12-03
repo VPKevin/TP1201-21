@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <routes>
   <!-- Front -->
-  <route p="" controller="FrontController" action="index" />
+  <route p="" controller="PostController" action="index" />
+  <route p="posts" controller="PostController" action="index" />
+  <route p="post" parameter="id" controller="PostController" action="show" />
+  <route p="post/update" parameter="id" controller="PostController" action="update" />
+  <route p="post/create" controller="PostController" action="create" />
 </routes>
