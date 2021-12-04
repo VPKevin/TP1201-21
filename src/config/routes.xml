@@ -3,7 +3,9 @@
   <!-- Front -->
   <route p="" controller="PostController" action="index" />
   <route p="posts" controller="PostController" action="index" />
-  <route p="post" parameter="id" controller="PostController" action="show" />
-  <route p="post/update" parameter="id" controller="PostController" action="update" />
+  <route p="post" params="id" controller="PostController" action="show" />
+  <route p="post/add" controller="PostController" action="form" />
+  <route p="post/edit" params="id" controller="PostController" action="form" />
   <route p="post/create" controller="PostController" action="create" />
+  <route p="post/update" params="id" controller="PostController" action="update" />
 </routes>

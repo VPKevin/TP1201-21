@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Model\PostManager;
 use App\Model\CommentaryManager;
+use App\Model\UserManager;
 
 class PostController extends BaseController
 {
@@ -15,7 +16,7 @@ class PostController extends BaseController
         return $this->render(
             'accueil',
             ['posts' => $posts],
-            '/post/index'
+            '/post/posts'
         );
     }
 
@@ -38,7 +39,23 @@ class PostController extends BaseController
         return $this->render(
             'show',
             $arrayOfContent,
-            'post/show'
+            '/post/show'
+        );
+    }
+
+    public function form()
+    {
+        $postManager = new PostManager();
+
+        $title = "Ajout d'un post";
+        $arrayOfContent = [];
+        if ($_GET['p'] == 'post/edit') {
+          $title = "Modification d'un post";
+        }
+        return $this->render(
+          $title,
+          $arrayOfContent,
+          '/post/form'
         );
     }
 
@@ -53,9 +70,6 @@ class PostController extends BaseController
             $post->setTitle($_POST['title']);
             $post->setContent($_POST['title']);
 
-            /** TODO : GET connected user */
-            //$post->setAutorId();
-
             $postManager->create($post);
             header('Location: /');
             exit();
@@ -63,7 +77,7 @@ class PostController extends BaseController
 
         return $this->render(
             'create',
-            null,
+            [],
             'post/create'
         );
     }
