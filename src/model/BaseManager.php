@@ -1,6 +1,8 @@
 <?php
 namespace App\Model;
 
+use PDO;
+
 abstract class BaseManager
 {
   protected $db;

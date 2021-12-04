@@ -14,8 +14,8 @@ class PostController extends BaseController
 
         return $this->render(
             'accueil',
-            $posts,
-            'post/index'
+            ['posts' => $posts],
+            '/post/index'
         );
     }
 

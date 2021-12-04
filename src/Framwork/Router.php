@@ -1,7 +1,7 @@
 <?php
 namespace App\Framwork;
 
-use ErrorController;
+use App\Controller\ErrorController;
 
 class Router
 {
@@ -27,6 +27,6 @@ class Router
         return new $controllerClass($action, $params);
       }
     }
-    // return new ErrorController('noRoute');
+    return new ErrorController('noRoute');
   }
 }

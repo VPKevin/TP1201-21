@@ -5,7 +5,7 @@ class PostManager extends BaseManager
 {
   public function getPosts(){
 
-    $query = $this->db->prepare('SELECT * FROM posts');
+    $query = $this->db->prepare('SELECT * FROM post');
     $query->execute();
     return $query->fetchAll();
 
