@@ -10,7 +10,7 @@ class BaseController
     public function __construct(string $action, array $params = [])
     {
         $this->params = $params;
-
+        
         $method = ucfirst($action);
         if(!is_callable([$this, $method])) {
             throw new \RuntimeException('Action non definie sur ce module');

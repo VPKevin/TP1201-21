@@ -15,6 +15,8 @@ class Commentary
 
     private $postId;
 
+    private $createdAt;
+
     public function __construct()
     {
         $this->createdAt = date('d/m/y h:m');

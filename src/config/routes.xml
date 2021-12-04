@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <routes>
-  <!-- Front -->
+
   <route p="" controller="PostController" action="index" />
+
+  <!-- POST -->
   <route p="posts" controller="PostController" action="index" />
   <route p="post" params="id" controller="PostController" action="show" />
-  <route p="post/add" controller="PostController" action="form" />
-  <route p="post/edit" params="id" controller="PostController" action="form" />
-  <route p="post/create" controller="PostController" action="create" />
-  <route p="post/update" params="id" controller="PostController" action="update" />
+  <route p="post-add" controller="PostController" action="form" />
+  <route p="post-edit" params="id" controller="PostController" action="form" />
+  <route p="post-create" controller="PostController" action="create" />
+  <route p="post-update" params="id" controller="PostController" action="update" />
+  <route p="post-delete" params="id" controller="PostController" action="delete" />
+
+  <!-- COMMENTARY -->
+  <route p="commentarys" controller="CommentaryController" action="index" />
+  <route p="commentary" params="id" controller="CommentaryController" action="show" />
+  <route p="commentary-add" controller="CommentaryController" action="form" />
+  <route p="commentary-edit" params="id" controller="CommentaryController" action="form" />
+  <route p="commentary-create" controller="CommentaryController" action="create" />
+  <route p="commentary-update" params="id" controller="CommentaryController" action="update" />
+  <route p="commentary-delete" params="id" controller="CommentaryController" action="delete" />
+
+  <!-- USER -->
+  <route p="users" controller="UsersController" action="index" />
+  <route p="user" params="id" controller="UsersController" action="show" />
+  <route p="user-add" controller="UsersController" action="form" />
+  <route p="user-edit" params="id" controller="UsersController" action="form" />
+  <route p="user-create" controller="UsersController" action="create" />
+  <route p="user-update" params="id" controller="UsersController" action="update" />
+  <route p="user-delete" params="id" controller="UsersController" action="delete" />
+
 </routes>
