@@ -8,17 +8,22 @@
 ```bash
 git clone https://github.com/VPKevin/TP0112.git [my-app-name]
 ```
+
+Aller ensuite à la racine du projet
+```bash
+cd [my-app-name]
+```
 Remplacer `[my-app-name]` avec le nom de dossier souhaité pour l'application.
 
 ### Installer le Docker
 
-Executer la commande qui suit à la racine du projet:
 ```bash
 docker-compose build
 ```
 
 ### Installer le depandance Composer
 
+Executer la commande qui suit dans le dossier `src`
 ```bash
 composer install
 ```
