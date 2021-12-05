@@ -25,16 +25,8 @@
   <route p="commentary-update" params="id" controller="CommentaryController" action="update" />
   <route p="commentary-delete" params="id" controller="CommentaryController" action="delete" />
 
-  <!-- USER -->
-  <route p="users" controller="UsersController" action="index" />
-  <route p="user" params="id" controller="UsersController" action="show" />
-  <route p="user-add" controller="UsersController" action="form" />
-  <route p="user-edit" params="id" controller="UsersController" action="form" />
-  <route p="user-create" controller="UsersController" action="create" />
-  <route p="user-update" params="id" controller="UsersController" action="update" />
-  <route p="user-delete" params="id" controller="UsersController" action="delete" />
-
   <!-- ADMIN -->
   <route p="admin" controller="AdminController" action="index" />
-  
+  <route p="admin-user-delete" params="id" controller="AdminController" action="deleteUser" />
+
 </routes>

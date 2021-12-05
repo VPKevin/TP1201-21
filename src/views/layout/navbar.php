@@ -13,7 +13,7 @@
       </ul>
       <?php if (isset($_SESSION['user'])): ?>
         <?php if ($_SESSION['user']['role'] == true): ?>
-          <a href="#" class="btn btn-outline-secondary me-2" type="submit">Admin</a>
+          <a href="/admin" class="btn btn-outline-secondary me-2" type="submit">Admin</a>
         <?php endif; ?>
         <a href="/logout" class="btn btn-outline-danger" type="submit">Se déconnecter</a>
       <?php else: ?>

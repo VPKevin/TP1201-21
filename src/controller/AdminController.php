@@ -10,34 +10,22 @@ class AdminController extends BaseController
     {
         $userManager = new UserManager();
 
-        if (!empty($_POST['mail']) && !empty($_POST['password'])){
+        $users = $userManager->getAll();
 
-            $user = $userManager->login($_POST['mail'] , $_POST['password']);
-
-            if(!$user) {
-                header('Location: /auth');
-                // TODO: Flash message d'erreur
-                exit();
-            }
-            else {
-                $_SESSION["user"]=$user;
-                header('Location: /');
-                exit();
-            }
-        }
-
-        header('Location: /auth');
-        // TODO: Flash message d'erreur
-        exit();
+        return $this->render(
+          'Panneau d\'administration',
+          ['users' => $users],
+          '/admin/index'
+        );
     }
 
-    public function delete()
+    public function deleteUser()
     {
         $userManager = new UserManager();
 
         $userManager->deleteById($this->params['id']);
 
-        header('Location: /');
+        header('Location: /admin');
         exit();
     }
 }
