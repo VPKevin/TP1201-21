@@ -22,7 +22,7 @@
 </div>
 <div class="d-flex mb-3">
   <h5>Les Commentaires</h5>
-  <?php if ($_SESSION['user']['id'] == $vars['post']['autorId'] || $_SESSION['user']['role'] == true): ?>
+  <?php if (isset($_SESSION['user'])): ?>
     <form class="ms-auto" action="/commentary-add" method="post">
       <input type="hidden" name="postId" value="<?= $vars['post']['id'] ?>">
       <button type="submit" class="btn btn-secondary">Commenter</button>
@@ -34,7 +34,7 @@
     <div class="card-body">
       <p class="card-text"><?= $commentary['content'] ?></p>
       <p class="card-text"><small class="text-muted">Commentaire posté le <?= $commentary['createdAt'] ?> par <?= $commentary['autorId'] ?></small></p>
-      <?php if ($_SESSION['user']['id'] == $vars['post']['autorId'] || $_SESSION['user']['role'] == true): ?>
+      <?php if ($_SESSION['user']['id'] == $commentary['autorId'] || $_SESSION['user']['role'] == true): ?>
         <a href="/commentary-edit/<?= $commentary['id'] ?>" class="btn btn-sm btn-primary ms-auto p-2">Editer</a>
         <a class="btn btn-sm btn-danger p-2" href="/commentary-delete/<?= $commentary['id'] ?>">Supprimer</a>
       <?php endif; ?>

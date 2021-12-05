@@ -34,4 +34,6 @@
   <route p="user-update" params="id" controller="UsersController" action="update" />
   <route p="user-delete" params="id" controller="UsersController" action="delete" />
 
+  <!-- ADMIN -->
+  <route p="admin" controller="AdminController" action="index" />
 </routes>

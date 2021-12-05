@@ -46,9 +46,8 @@ class AuthController extends BaseController
         // $user = new User();
 
         $COLUMNS = $_POST;
-        var_dump($_POST);die;
 
-        if (!empty($COLUMNS['first-name']) && !empty($COLUMNS['content'])
+        if (!empty($COLUMNS['firstname']) && !empty($COLUMNS['lastname'])
             && !empty($COLUMNS['mail']) && !empty($COLUMNS['password'])){
 
             // $user->setFirstName($COLUMNS['title']);
@@ -58,7 +57,8 @@ class AuthController extends BaseController
             // $hashedPassword = password_hash($COLUMNS['password'], PASSWORD_BCRYPT);
             // $user->setPassword($hashedPassword);
             // $user->setRole($COLUMNS['is-admin']);
-            var_dump($COLUMNS);die;
+            // var_dump('test');
+            // var_dump($COLUMNS);die;
             $userManager->create($COLUMNS);
             header('Location: /');
             exit();

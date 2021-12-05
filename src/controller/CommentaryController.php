@@ -32,7 +32,7 @@ class CommentaryController extends BaseController
         $commentaryManager = new CommentaryManager();
 
         $COLUMNS = $_POST;
-        $COLUMNS['autorId'] = '1';
+        $COLUMNS['autorId'] = $_SESSION['user']["id"];
         if (!empty($COLUMNS['content'])){
 
           $commentary = $commentaryManager->create($COLUMNS);
