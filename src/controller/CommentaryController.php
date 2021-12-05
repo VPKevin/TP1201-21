@@ -35,7 +35,7 @@ class CommentaryController extends BaseController
         $COLUMNS['autorId'] = '1';
         if (!empty($COLUMNS['content'])){
 
-          $commentary = $commentaryManager->createById($COLUMNS);
+          $commentary = $commentaryManager->create($COLUMNS);
           header('Location: /post/'.$_POST['postId']);
           exit();
         }

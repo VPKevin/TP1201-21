@@ -44,7 +44,7 @@ abstract class BaseManager
 
   }
 
-  public function createById(array $columns){
+  public function create(array $columns){
     $cols = [];
     $values = [];
     foreach ($columns as $key => $value) {

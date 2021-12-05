@@ -65,10 +65,10 @@ class PostController extends BaseController
         $postManager = new PostManager();
 
         $COLUMNS = $_POST;
-        $COLUMNS['autorId'] = '1';
+        $COLUMNS['autorId'] = $_SESSION['user']["id"];
         if (!empty($COLUMNS['title']) && !empty($COLUMNS['content'])){
 
-          $post = $postManager->createById($COLUMNS);
+          $post = $postManager->create($COLUMNS);
           header('Location: /');
           exit();
         }

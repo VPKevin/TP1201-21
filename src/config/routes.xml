@@ -3,6 +3,12 @@
 
   <route p="" controller="PostController" action="index" />
 
+  <!-- AUTH -->
+  <route p="auth" controller="AuthController" action="auth" />
+  <route p="login" controller="AuthController" action="login" />
+  <route p="signin" controller="AuthController" action="signin" />
+  <route p="logout" controller="AuthController" action="logout" />
+
   <!-- POST -->
   <route p="posts" controller="PostController" action="index" />
   <route p="post" params="id" controller="PostController" action="show" />
