@@ -1,0 +1,6 @@
+/.idea
+/database/ddl_recovery-backup.log
+/database/ddl_recovery.log
+/database/aria_log_control
+/database/aria_log.00000001
+/database/ib_logfile0

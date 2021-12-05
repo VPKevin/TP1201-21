@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+
+  <route p="" controller="PostController" action="index" />
+
+  <!-- AUTH -->
+  <route p="auth" controller="AuthController" action="auth" />
+  <route p="login" controller="AuthController" action="login" />
+  <route p="signin" controller="AuthController" action="signin" />
+  <route p="logout" controller="AuthController" action="logout" />
+
+  <!-- POST -->
+  <route p="posts" controller="PostController" action="index" />
+  <route p="post" params="id" controller="PostController" action="show" />
+  <route p="post-add" controller="PostController" action="form" />
+  <route p="post-edit" params="id" controller="PostController" action="form" />
+  <route p="post-create" controller="PostController" action="create" />
+  <route p="post-update" params="id" controller="PostController" action="update" />
+  <route p="post-delete" params="id" controller="PostController" action="delete" />
+
+  <!-- COMMENTARY -->
+  <route p="commentary-add" controller="CommentaryController" action="form" />
+  <route p="commentary-edit" params="id" controller="CommentaryController" action="form" />
+  <route p="commentary-create" controller="CommentaryController" action="create" />
+  <route p="commentary-update" params="id" controller="CommentaryController" action="update" />
+  <route p="commentary-delete" params="id" controller="CommentaryController" action="delete" />
+
+  <!-- ADMIN -->
+  <route p="admin" controller="AdminController" action="index" />
+  <route p="admin-user-delete" params="id" controller="AdminController" action="deleteUser" />
+
+</routes>
