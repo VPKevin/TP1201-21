@@ -3,17 +3,10 @@ namespace App\Controller;
 
 use App\Model\UserManager;
 
-class AuthController extends BaseController
+class AdminController extends BaseController
 {
-    public function auth()
-    {
-        return $this->render(
-            'Se connecter',
-            [],
-            '/auth/auth'
-        );
-    }
-    public function login()
+
+    public function index()
     {
         $userManager = new UserManager();
 
@@ -37,32 +30,14 @@ class AuthController extends BaseController
         // TODO: Flash message d'erreur
         exit();
     }
-    public function signin()
+
+    public function delete()
     {
         $userManager = new UserManager();
 
-        $COLUMNS = $_POST;
+        $userManager->deleteById($this->params['id']);
 
-        if (!empty($COLUMNS['firstname']) && !empty($COLUMNS['lastname'])
-            && !empty($COLUMNS['mail']) && !empty($COLUMNS['password'])){
-
-            $userManager->create($COLUMNS);
-            header('Location: /');
-            exit();
-        }
-
-        header('Location: /auth');
-        // TODO: Flash message d'erreur
-        exit();
-
-    }
-
-    public function logout()
-    {
-
-        session_destroy();
         header('Location: /');
         exit();
-
     }
 }
