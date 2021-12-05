@@ -36,4 +36,5 @@
 
   <!-- ADMIN -->
   <route p="admin" controller="AdminController" action="index" />
+  
 </routes>

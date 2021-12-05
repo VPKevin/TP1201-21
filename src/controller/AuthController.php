@@ -17,8 +17,6 @@ class AuthController extends BaseController
     {
         $userManager = new UserManager();
 
-        // $user = new User();
-
         if (!empty($_POST['mail']) && !empty($_POST['password'])){
 
             $user = $userManager->login($_POST['mail'] , $_POST['password']);
@@ -43,31 +41,20 @@ class AuthController extends BaseController
     {
         $userManager = new UserManager();
 
-        // $user = new User();
-
         $COLUMNS = $_POST;
 
         if (!empty($COLUMNS['firstname']) && !empty($COLUMNS['lastname'])
             && !empty($COLUMNS['mail']) && !empty($COLUMNS['password'])){
 
-            // $user->setFirstName($COLUMNS['title']);
-            // $user->setLastName($COLUMNS['content']);
-            // $user->setEmail($COLUMNS['mail']);
-
-            // $hashedPassword = password_hash($COLUMNS['password'], PASSWORD_BCRYPT);
-            // $user->setPassword($hashedPassword);
-            // $user->setRole($COLUMNS['is-admin']);
-            // var_dump('test');
-            // var_dump($COLUMNS);die;
             $userManager->create($COLUMNS);
             header('Location: /');
             exit();
         }
 
-        return $this->render(
-            'create',
-            [],
-            'post/create'
+        header('Location: /auth');
+        // TODO: Flash message d'erreur
+        exit();
+
         );
     }
 
@@ -75,8 +62,8 @@ class AuthController extends BaseController
     {
 
         session_destroy();
-
         header('Location: /');
         exit();
+
     }
 }
