@@ -1,16 +1,14 @@
 <body>
     <div class="panel panel-default">
         <div class="panel-body">
-          <form class="" action="<?php echo isset($vars['post']) ? '/post-update/' . $vars['post']['id'] : '/post-create' ?>" method="post">
+          <?php if (!isset($vars['commentary'])): ?><p>Vous êtes sur le point de commenter le post n° <?= $_POST['postId'] ?></p><?php endif; ?>
+          <form class="" action="<?php echo isset($vars['commentary']) ? '/commentary-update/' . $vars['commentary']['id'] : '/commentary-create' ?>" method="post">
             <div class="form-group mb-2">
-                <label for="title">Titre</label>
-                <input type="text" name="title" class="form-control" id="title" placeholder="Titre" value="<?php echo isset($vars['post']) ? $vars['post']['title'] : '' ; ?>">
+                <label for="content">Commentaire</label>
+                <textarea name="content" class="form-control" id="content" placeholder="Contenu"><?php echo isset($vars['commentary']) ? $vars['commentary']['content'] : '' ; ?></textarea>
             </div>
-            <div class="form-group mb-2">
-                <label for="content">Contenu</label>
-                <textarea name="content" class="form-control" id="content" placeholder="Contenu"><?php echo isset($vars['post']) ? $vars['post']['content'] : '' ; ?></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="hidden" name="postId" value="<?= $_POST['postId'] ?>">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
           </form>
         </div>
     </div>

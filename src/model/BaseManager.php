@@ -32,6 +32,18 @@ abstract class BaseManager
 
   }
 
+  public function getBy(array $columns){
+    $cols = [];
+    foreach ($columns as $key => $value) {
+      $cols[] = implode(' = ', [$key , '"'.$value.'"']);
+    }
+    $cols = implode(' AND ', $cols);
+    $query = $this->db->prepare('SELECT * FROM ' . $this->name .' WHERE '. $cols);
+    $query->execute();
+    return $query->fetchAll();
+
+  }
+
   public function createById(array $columns){
     $cols = [];
     $values = [];
@@ -41,7 +53,7 @@ abstract class BaseManager
     }
     $cols = implode(' , ', $cols);
     $values = implode(' , ', $values);
-    $query = $this->db->prepare('INSERT INTO post ( '. $cols .' ) VALUES ( '. $values .' )');
+    $query = $this->db->prepare('INSERT INTO ' . $this->name .' ( '. $cols .' ) VALUES ( '. $values .' )');
     $query->execute();
     return $query->fetch();
 

@@ -1,112 +1,81 @@
 <?php
 namespace App\Controller;
 
-use App\Model\PostManager;
 use App\Model\CommentaryManager;
+use App\Model\PostManager;
 use App\Model\UserManager;
 
-class PostController extends BaseController
+class CommentaryController extends BaseController
 {
-    public function index()
-    {
-        $postManager = new PostManager();
-
-        $posts = $postManager->getAll();
-
-        return $this->render(
-            'accueil',
-            ['posts' => $posts],
-            '/post/posts'
-        );
-    }
-
-    public function show() {
-        $postManager = new PostManager();
-        $commentaryManager = new CommentaryManager();
-        $userManager = new UserManager();
-
-        $post = $postManager->getById($this->params['id']);
-        // $commentaries = $commentaryManager->findAll($post->getId());
-        // $user = $userManager->findAll();
-        $arrayOfContent = [
-            'post' => $post//,
-            // 'commentaries' => $commentaries,
-            // 'users' => $user
-        ];
-
-        return $this->render(
-            'Un post',
-            $arrayOfContent,
-            '/post/post'
-        );
-    }
 
     public function form()
     {
-        $title = "Ajout d'un post";
+        $title = "Ajout d'un commentaire";
         $arrayOfContent = [];
 
-        if ($_GET['p'] == 'post-edit') {
-          $postManager = new PostManager();
+        if ($_GET['p'] == 'commentary-edit') {
+          $commentaryManager = new CommentaryManager();
 
-          $post = $postManager->getById($this->params['id']);
-          $arrayOfContent = [ 'post' => $post ];
-          $title = "Modification d'un post";
+          $commentary = $commentaryManager->getById($this->params['id']);
+          $arrayOfContent = [ 'commentary' => $commentary ];
+          $title = "Modification d'un commentaire";
         }
         return $this->render(
           $title,
           $arrayOfContent,
-          '/post/form'
+          '/commentary/form'
         );
     }
 
     public function create()
     {
-        $postManager = new PostManager();
+        $commentaryManager = new CommentaryManager();
 
         $COLUMNS = $_POST;
         $COLUMNS['autorId'] = '1';
-        if (!empty($COLUMNS['title']) && !empty($COLUMNS['content'])){
+        if (!empty($COLUMNS['content'])){
 
-          $post = $postManager->createById($COLUMNS);
-          header('Location: /');
+          $commentary = $commentaryManager->createById($COLUMNS);
+          header('Location: /post/'.$_POST['postId']);
           exit();
         }
 
         return $this->render(
             'Ajout d\'un post',
             [],
-            '/post/form'
+            '/commentary/form'
         );
     }
 
     public function update()
     {
-        $postManager = new PostManager();
+        $commentaryManager = new CommentaryManager();
 
-        $post = $postManager->getById($this->params['id']);
+        $commentary = $commentaryManager->getById($this->params['id']);
 
         if (!empty($_POST['title']) && !empty($_POST['content'])){
 
-            $post = $postManager->updateColById($this->params['id'], $_POST);
+            $commentary = $commentaryManager->updateColById($this->params['id'], $_POST);
             header('Location: /');
             exit();
         }
 
         return $this->render(
-            'Modification d\'un post',
-            [ 'post' => $post ],
-            '/post/form'
+            'Modification d\'un commentary',
+            [ 'commentary' => $commentary ],
+            '/commentary/form'
         );
     }
 
     public function delete()
     {
-        $postManager = new PostManager();
+        $commentaryManager = new CommentaryManager();
 
-        $postManager->deleteById($this->params['id']);
+        $idPost = $commentaryManager->getById($this->params['id'])['postId'];
 
-        header('Location: /');
+        $commentaryManager->deleteById($this->params['id']);
+
+        header('Location: /post/'. $idPost);
         exit();
     }
 }

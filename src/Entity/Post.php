@@ -12,6 +12,8 @@ class Post
 
     private $content;
 
+    private $imagePath;
+
     private $autorId;
 
     private $createdAt;
@@ -46,14 +48,24 @@ class Post
         $this->content = $content;
     }
 
-    public function getAutor()
+    public function getImagePath()
     {
-        return $this->autor;
+        return $this->imagePath;
     }
 
-    public function setAutor($autor)
+    public function setImagePath($imagePath)
     {
-        $this->autor = $autor;
+        $this->imagePath = $imagePath;
+    }
+
+    public function getAutorId()
+    {
+        return $this->autorId;
+    }
+
+    public function setAutorId($autorId)
+    {
+        $this->autorId = $autorId;
     }
 
     public function getCreatedAt()

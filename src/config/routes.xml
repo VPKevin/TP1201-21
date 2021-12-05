@@ -13,8 +13,6 @@
   <route p="post-delete" params="id" controller="PostController" action="delete" />
 
   <!-- COMMENTARY -->
-  <route p="commentarys" controller="CommentaryController" action="index" />
-  <route p="commentary" params="id" controller="CommentaryController" action="show" />
   <route p="commentary-add" controller="CommentaryController" action="form" />
   <route p="commentary-edit" params="id" controller="CommentaryController" action="form" />
   <route p="commentary-create" controller="CommentaryController" action="create" />

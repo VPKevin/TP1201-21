@@ -26,11 +26,11 @@ class PostController extends BaseController
         $userManager = new UserManager();
 
         $post = $postManager->getById($this->params['id']);
-        // $commentaries = $commentaryManager->findAll($post->getId());
+        $commentaries = $commentaryManager->getBy(['postId' => $this->params['id']]);
         // $user = $userManager->findAll();
         $arrayOfContent = [
-            'post' => $post//,
-            // 'commentaries' => $commentaries,
+            'post' => $post,
+            'commentaries' => $commentaries//,
             // 'users' => $user
         ];
 
